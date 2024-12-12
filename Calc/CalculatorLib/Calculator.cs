@@ -487,10 +487,10 @@ namespace CalculatorLib
             result += new string('=', maxLength * tableSample.GetLength(1)) + "\n";
             for (int row = 0; row < tableSample.GetLength(0); row++)
             {
-                result += "|";
+                
                 for (int col = 0; col < tableSample.GetLength(1); col++)
                 {
-                    result += tableSample[row, col].PadRight(maxLength, ' ') + "|";
+                    result += "|" + tableSample[row, col].PadRight(maxLength, ' ');
                 }
                 result += "\n" + new string('=', maxLength* tableSample.GetLength(1)) + "\n";
             }

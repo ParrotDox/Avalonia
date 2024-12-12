@@ -1,26 +1,96 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<!--Основной контейнер-->
 	<Style Selector="Panel.BodyContainer">
 		<Setter Property="Margin" Value="20"/>
 	</Style>
+	<Style Selector="Grid.MainGrid">
+		
+	</Style>
+	<!--Левая часть, ввод уравнения-->
 	<Style Selector="StackPanel.FunctionalPanel">
 		<Setter Property="Margin" Value="0 0 10 0"/>
+		<Setter Property="Background" Value="#876ED7"/>
 	</Style>
+	<Style Selector="StackPanel.ButtonsPanel > Panel">
+		<Setter Property="Background" Value="#3914AF"/>
+	</Style>
+	<Style Selector="StackPanel.ButtonsPanel > Panel > Label">
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="15"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+	</Style>
+	<!--Поле ввода-->
 	<Style Selector="TextBox.EquationInput">
-		<Setter Property="Margin" Value="0 5"/>
+		<Setter Property="Margin" Value="10 20"/>
 		<Setter Property="Height" Value="50"/>
 		<Setter Property="FontSize" Value="30"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="BorderBrush" Value="White"/>
+		<Setter Property="Background" Value="White"/>
 	</Style>
-	
+	<!--Операции-->
+	<Style Selector="WrapPanel.OperationsPanel">
+		<Setter Property="Margin" Value="0 10"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="WrapPanel.OperationsPanel > Button">
+		<Setter Property="Width" Value="50"/>
+		<Setter Property="Height" Value="50"/>
+		<Setter Property="FontSize" Value="30"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Margin" Value="2 0"/>
+	</Style>
+	<!--Переменные-->
+	<Style Selector="WrapPanel.VariablesPanel">
+		<Setter Property="Margin" Value="0 10"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+	</Style>
 	<Style Selector="WrapPanel.VariablesPanel > Button">
 		<Setter Property="Width" Value="50"/>
 		<Setter Property="Height" Value="50"/>
-		
+		<Setter Property="FontSize" Value="30"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Margin" Value="2 0"/>
 	</Style>
-	<Style Selector="WrapPanel.VariablesPanel > Button > TextBlock">
-		<Setter Property="Width" Value="50"/>
+	<Style Selector="Button.CalcButton">
+		<Setter Property="Width" Value="100"/>
 		<Setter Property="Height" Value="50"/>
+		<Setter Property="FontSize" Value="25"/>
+		<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+	</Style>
+	<!--Правая сторона, результаты-->
+	<Style Selector="StackPanel.ResultPanel">
+		<Setter Property="Background" Value="#876ED7"/>
+	</Style>
+	<Style Selector="StackPanel.ResultPanel > Label">
+		<Setter Property="Background" Value="#3914AF"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="15"/>
+		<Setter Property="Padding" Value="10 5 0 5"/>
+	</Style>
+	<Style Selector="StackPanel.ResultPanel > StackPanel > TextBlock">
+		<Setter Property="Background" Value="#876ED7"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="FontSize" Value="15"/>
+		<Setter Property="Padding" Value="10 5 0 5"/>
+	</Style>
+	<!--Логгер-->
+	<Style Selector="TextBlock.Logger">
+		<Setter Property="Margin" Value="0 10 0 0"/>
+		<Setter Property="Padding" Value="10 10 0 0"/>
+		<Setter Property="Background" Value="#876ED7"/>
+		<Setter Property="Foreground" Value="White"/>
 		<Setter Property="FontSize" Value="20"/>
-		
+	</Style>
+	<!--Общий стиль кнопок-->
+	<Style Selector="Button">
+		<Setter Property="Background" Value="#3914AF"/>
+		<Setter Property="Foreground" Value="White"/>
 	</Style>
 </Styles>

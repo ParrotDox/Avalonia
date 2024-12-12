@@ -50,11 +50,11 @@ public partial class MainView : UserControl
     //Operations Input (+ * ¬ ⊕ → ↓ ↑ ~)
     public void ButtonOR_Click(object sender, RoutedEventArgs args)
     {
-        EquationInput.Text += "+";
+        EquationInput.Text += "∨";
     }
     public void ButtonAND_Click(object sender, RoutedEventArgs args)
     {
-        EquationInput.Text += "*";
+        EquationInput.Text += "∧";
     }
     public void ButtonNOT_Click(object sender, RoutedEventArgs args)
     {
@@ -62,7 +62,7 @@ public partial class MainView : UserControl
     }
     public void ButtonXOR_Click(object sender, RoutedEventArgs args)
     {
-        EquationInput.Text += "O";
+        EquationInput.Text += "⊕";
     }
     public void ButtonIMP_Click(object sender, RoutedEventArgs args)
     {
@@ -93,11 +93,34 @@ public partial class MainView : UserControl
         if (!isEquationNull) 
         {
             equation = equation.ToLower();
+            equation = equation.Replace('⊕', 'O');
+            equation = equation.Replace('∨', '+');
+            equation = equation.Replace('∧', '*');
         }
         else 
         {
             OperationLog.Text = "ERROR: INCORRECT EQUATION: NullException";
             return;
+        }
+        if(equation.Length < 2) 
+        {
+            OperationLog.Text = "ERROR: INCORRECT EQUATION: IncompleteEquationException";
+            return;
+        }
+
+        // checkIfBracketsNeeded
+        int bracketsCtr = 0;
+        foreach (char letter in equation)
+        {
+            if (letter == '(' || letter == ')') 
+            {
+                ++bracketsCtr;
+            }
+        }
+        if (bracketsCtr == 2)
+        {
+            equation = equation.Replace("(", "");
+            equation = equation.Replace(")", "");
         }
 
         bool isBracketsCorrect = calculator.CheckBrackets(equation);
@@ -131,5 +154,6 @@ public partial class MainView : UserControl
         PDNFAnswer.Text = calculator.GetPDNF();
         MDNFAnswer.Text = calculator.GetMDNF();
         TableAnswer.Text = calculator.PrintTable(truthTable);
+        OperationLog.Text = "Calculations completed";
     }
 }

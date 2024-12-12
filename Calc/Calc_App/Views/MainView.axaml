@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Calc_App.ViewModels"
+			 Background="#3A0470"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Calc_App.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -12,31 +13,27 @@
     <vm:MainViewModel />
   </Design.DataContext>
 	<Panel Classes="BodyContainer">
-		<Grid RowDefinitions="95* 5*"
-			  ColumnDefinitions="2*, 3*"
-			  ShowGridLines="True">
+		<Grid 
+			Classes="MainGrid"
+			RowDefinitions="92* 8*"
+			ColumnDefinitions="2*, 3*"
+			ShowGridLines="True">
 			<StackPanel 
 				Classes="FunctionalPanel"
 				Grid.Row="0" 
 				Grid.Column="0">
-				<TextBox Classes ="EquationInput" x:Name="EquationInput"/>
-				<StackPanel>
-					<WrapPanel
-						Orientation="Horizontal"
-						Classes="VariablesPanel">
-						<Button x:Name="ButtonX" Click="ButtonX_Click"><TextBlock>X</TextBlock></Button>
-						<Button x:Name="ButtonY" Click="ButtonY_Click"><TextBlock>Y</TextBlock></Button>
-						<Button x:Name="ButtonZ" Click="ButtonZ_Click"><TextBlock>Z</TextBlock></Button>
-						<Button x:Name="ButtonK" Click="ButtonK_Click"><TextBlock>K</TextBlock></Button>
-						<Button x:Name="ButtonR" Click="ButtonR_Click"><TextBlock>R</TextBlock></Button>
-					</WrapPanel>
+				<TextBox Classes="EquationInput" x:Name="EquationInput"/>
+				<StackPanel Classes="ButtonsPanel">
+					<Panel>
+						<Label>Operations</Label>
+					</Panel>
 					<WrapPanel
 						Orientation="Horizontal"
 						Classes="OperationsPanel">
 						<Button x:Name="ButtonLB" Click="ButtonLB_Click" Content="("/>
 						<Button x:Name="ButtonRB" Click="ButtonRB_Click" Content=")"/>
-						<Button x:Name="ButtonOR" Click="ButtonOR_Click" Content="+"/>
-						<Button x:Name="ButtonAND" Click="ButtonAND_Click" Content="*"/>
+						<Button x:Name="ButtonOR" Click="ButtonOR_Click" Content="∨"/>
+						<Button x:Name="ButtonAND" Click="ButtonAND_Click" Content="∧"/>
 						<Button x:Name="ButtonNOT" Click="ButtonNOT_Click" Content="¬"/>
 						<Button x:Name="ButtonXOR" Click="ButtonXOR_Click" Content="⊕"/>
 						<Button x:Name="ButtonIMP" Click="ButtonIMP_Click" Content="→"/>
@@ -44,42 +41,50 @@
 						<Button x:Name="ButtonNAND" Click="ButtonNAND_Click" Content="↑"/>
 						<Button x:Name="ButtonXNOR" Click="ButtonXNOR_Click" Content="~"/>
 					</WrapPanel>
-					<StackPanel
+					<Panel>
+						<Label>Variables and func.</Label>
+					</Panel>
+					<WrapPanel
 						Orientation="Horizontal"
-						Classes="ProcessPanel">
-						<Button x:Name="ButtonClear" Click="ButtonClear_Click" Content="Clear"/>
-						<Button x:Name="ButtonCalculate" Click="ButtonCalculate_Click" Content="Calculate"/>
-					</StackPanel>
+						Classes="VariablesPanel">
+						<Button x:Name="ButtonX" Click="ButtonX_Click" Content="X"></Button>
+						<Button x:Name="ButtonY" Click="ButtonY_Click" Content="Y"></Button>
+						<Button x:Name="ButtonZ" Click="ButtonZ_Click" Content="Z"></Button>
+						<Button x:Name="ButtonK" Click="ButtonK_Click" Content="K"></Button>
+						<Button x:Name="ButtonR" Click="ButtonR_Click" Content="R"></Button>
+						<Button x:Name="ButtonClear" Click="ButtonClear_Click" Classes="CalcButton" Content="Clear"/>
+						<Button x:Name="ButtonCalculate" Click="ButtonCalculate_Click" Classes="CalcButton" Content="Calc."/>
+					</WrapPanel>
 				</StackPanel>
 			</StackPanel>
-			<Panel Grid.Row="1" Grid.Column="0">
-				<TextBlock x:Name="OperationLog" Text="Logs"/>
+			<Panel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+				<TextBlock Classes="Logger" x:Name="OperationLog" Text="Logs"/>
 			</Panel>
-			<StackPanel Grid.Row="0" Grid.Column="1">
+			<StackPanel Classes="ResultPanel" Grid.Row="0" Grid.Column="1" >
 				<Label>PDNF</Label>
-				<WrapPanel>
+				<StackPanel>
 					<TextBlock
 						x:Name="PDNFAnswer"
 						Text=""/>
-				</WrapPanel >
+				</StackPanel >
 				<Label>PCNF</Label>
-				<WrapPanel>
+				<StackPanel>
 					<TextBlock
 						x:Name="PCNFAnswer"
 						Text=""/>
-				</WrapPanel>
+				</StackPanel>
 				<Label>MDNF</Label>
-				<WrapPanel>
+				<StackPanel>
 					<TextBlock
 						x:Name="MDNFAnswer"
 						Text=""/>
-				</WrapPanel>
-				<WrapPanel>
-					<Label>Table</Label>
+				</StackPanel>
+				<Label>Table</Label>
+				<StackPanel>
 					<TextBlock
 						x:Name="TableAnswer"
 						Text=""/>
-				</WrapPanel>
+				</StackPanel>
 			</StackPanel>
 		</Grid>
 	</Panel>
