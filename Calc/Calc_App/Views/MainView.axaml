@@ -1,0 +1,81 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Calc_App.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Calc_App.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+	<Panel Classes="BodyContainer">
+		<Grid RowDefinitions="95* 5*"
+			  ColumnDefinitions="2*, 3*"
+			  ShowGridLines="True">
+			<StackPanel Grid.Row="0" Grid.Column="0">
+				<TextBox x:Name="EquationInput"/>
+				<StackPanel>
+					<WrapPanel
+						Orientation="Horizontal"
+						Classes="VariablesPanel">
+						<Button x:Name="ButtonX" Click="ButtonX_Click" Content="X"/>
+						<Button x:Name="ButtonY" Click="ButtonY_Click" Content="Y"/>
+						<Button x:Name="ButtonZ" Click="ButtonZ_Click" Content="Z"/>
+						<Button x:Name="ButtonK" Click="ButtonK_Click" Content="K"/>
+						<Button x:Name="ButtonR" Click="ButtonR_Click" Content="R"/>
+					</WrapPanel>
+					<WrapPanel
+						Orientation="Horizontal"
+						Classes="OperationsPanel">
+						<Button x:Name="ButtonLB" Click="ButtonLB_Click" Content="("/>
+						<Button x:Name="ButtonRB" Click="ButtonRB_Click" Content=")"/>
+						<Button x:Name="ButtonOR" Click="ButtonOR_Click" Content="+"/>
+						<Button x:Name="ButtonAND" Click="ButtonAND_Click" Content="*"/>
+						<Button x:Name="ButtonNOT" Click="ButtonNOT_Click" Content="¬"/>
+						<Button x:Name="ButtonXOR" Click="ButtonXOR_Click" Content="⊕"/>
+						<Button x:Name="ButtonIMP" Click="ButtonIMP_Click" Content="→"/>
+						<Button x:Name="ButtonNOR" Click="ButtonNOR_Click" Content="↓"/>
+						<Button x:Name="ButtonNAND" Click="ButtonNAND_Click" Content="↑"/>
+						<Button x:Name="ButtonXNOR" Click="ButtonXNOR_Click" Content="~"/>
+					</WrapPanel>
+					<StackPanel
+						Orientation="Horizontal"
+						Classes="ProcessPanel">
+						<Button x:Name="ButtonClear" Click="ButtonClear_Click" Content="Clear"/>
+						<Button x:Name="ButtonCalculate" Click="ButtonCalculate_Click" Content="Calculate"/>
+					</StackPanel>
+				</StackPanel>
+			</StackPanel>
+			<Panel Grid.Row="1" Grid.Column="0">
+				<TextBlock x:Name="OperationLog" Text="Logs"/>
+			</Panel>
+			<StackPanel Grid.Row="0" Grid.Column="1">
+				<ContentControl>
+					
+				</ContentControl>
+				<Label>PDNF</Label>
+				<WrapPanel>
+					<TextBlock
+						x:Name="PDNFAnswer"
+						Text=""/>
+				</WrapPanel >
+				<Label>PCNF</Label>
+				<WrapPanel>
+					<TextBlock
+						x:Name="PCNFAnswer"
+						Text=""/>
+				</WrapPanel>
+				<Label>MDNF</Label>
+				<WrapPanel >
+					<TextBlock
+						x:Name="MDNFAnswer"
+						Text=""/>
+				</WrapPanel>
+				<!--TO DO-->
+			</StackPanel>
+		</Grid>
+	</Panel>
+</UserControl>
