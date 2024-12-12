@@ -15,17 +15,20 @@
 		<Grid RowDefinitions="95* 5*"
 			  ColumnDefinitions="2*, 3*"
 			  ShowGridLines="True">
-			<StackPanel Grid.Row="0" Grid.Column="0">
-				<TextBox x:Name="EquationInput"/>
+			<StackPanel 
+				Classes="FunctionalPanel"
+				Grid.Row="0" 
+				Grid.Column="0">
+				<TextBox Classes ="EquationInput" x:Name="EquationInput"/>
 				<StackPanel>
 					<WrapPanel
 						Orientation="Horizontal"
 						Classes="VariablesPanel">
-						<Button x:Name="ButtonX" Click="ButtonX_Click" Content="X"/>
-						<Button x:Name="ButtonY" Click="ButtonY_Click" Content="Y"/>
-						<Button x:Name="ButtonZ" Click="ButtonZ_Click" Content="Z"/>
-						<Button x:Name="ButtonK" Click="ButtonK_Click" Content="K"/>
-						<Button x:Name="ButtonR" Click="ButtonR_Click" Content="R"/>
+						<Button x:Name="ButtonX" Click="ButtonX_Click"><TextBlock>X</TextBlock></Button>
+						<Button x:Name="ButtonY" Click="ButtonY_Click"><TextBlock>Y</TextBlock></Button>
+						<Button x:Name="ButtonZ" Click="ButtonZ_Click"><TextBlock>Z</TextBlock></Button>
+						<Button x:Name="ButtonK" Click="ButtonK_Click"><TextBlock>K</TextBlock></Button>
+						<Button x:Name="ButtonR" Click="ButtonR_Click"><TextBlock>R</TextBlock></Button>
 					</WrapPanel>
 					<WrapPanel
 						Orientation="Horizontal"
@@ -53,9 +56,6 @@
 				<TextBlock x:Name="OperationLog" Text="Logs"/>
 			</Panel>
 			<StackPanel Grid.Row="0" Grid.Column="1">
-				<ContentControl>
-					
-				</ContentControl>
 				<Label>PDNF</Label>
 				<WrapPanel>
 					<TextBlock
@@ -69,12 +69,17 @@
 						Text=""/>
 				</WrapPanel>
 				<Label>MDNF</Label>
-				<WrapPanel >
+				<WrapPanel>
 					<TextBlock
 						x:Name="MDNFAnswer"
 						Text=""/>
 				</WrapPanel>
-				<!--TO DO-->
+				<WrapPanel>
+					<Label>Table</Label>
+					<TextBlock
+						x:Name="TableAnswer"
+						Text=""/>
+				</WrapPanel>
 			</StackPanel>
 		</Grid>
 	</Panel>

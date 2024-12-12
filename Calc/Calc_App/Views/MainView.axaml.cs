@@ -1,10 +1,12 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
 using CalculatorLib;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Calc_App.Views;
 
@@ -60,7 +62,7 @@ public partial class MainView : UserControl
     }
     public void ButtonXOR_Click(object sender, RoutedEventArgs args)
     {
-        EquationInput.Text += "⊕";
+        EquationInput.Text += "O";
     }
     public void ButtonIMP_Click(object sender, RoutedEventArgs args)
     {
@@ -128,6 +130,6 @@ public partial class MainView : UserControl
         PCNFAnswer.Text = calculator.GetPCNF();
         PDNFAnswer.Text = calculator.GetPDNF();
         MDNFAnswer.Text = calculator.GetMDNF();
-
+        TableAnswer.Text = calculator.PrintTable(truthTable);
     }
 }

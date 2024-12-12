@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Windows.Markup;
 
 namespace CalculatorLib
@@ -467,5 +468,34 @@ namespace CalculatorLib
             MDNF = tempMDNF;
             return tempMDNF;
         }
+        //[PRINTING TABLE]
+        public string PrintTable(string[,] t) 
+        {
+            string[,] tableSample = t;
+            int maxLength = 0;
+            string result = "";
+            //Получаем максимальную длину ячейки
+            for(int row = 0; row < tableSample.GetLength(0); row++) 
+            {
+                for(int col = 0;  col < tableSample.GetLength(1); col++) 
+                {
+                    if (tableSample[row, col].Length > maxLength)
+                        maxLength = tableSample[row, col].Length;
+                }
+            }
+
+            result += new string('=', maxLength * tableSample.GetLength(1)) + "\n";
+            for (int row = 0; row < tableSample.GetLength(0); row++)
+            {
+                result += "|";
+                for (int col = 0; col < tableSample.GetLength(1); col++)
+                {
+                    result += tableSample[row, col].PadRight(maxLength, ' ') + "|";
+                }
+                result += "\n" + new string('=', maxLength* tableSample.GetLength(1)) + "\n";
+            }
+            return result;
+        }
     }
 }
+
