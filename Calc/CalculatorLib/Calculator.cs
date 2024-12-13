@@ -62,22 +62,43 @@ namespace CalculatorLib
         }
         public bool CheckOperations(string eq)
         {
-            //Checks if equation has mistakes such as "++" or "+*"
+            //Checks if equation has mistakes such as "++" or "+*" and checks "+X" or "¬X" cases
             bool flag = true;
             foreach(char operation1 in operations) 
             {
-                if(eq.Contains(operation1 + " ")) 
+                //Check if is "not(!)" operation when the length of equation is 2
+                if (eq.Length == 2) 
+                {
+                    foreach (char variable in variables) 
+                    {
+                        string variableString = variable.ToString();
+                        if ((eq.Contains(operation1 + variableString) || eq.Contains(variableString + operation1)) && operation1 != '¬') 
+                        {
+                            flag = false;
+                        }
+                    }
+                }
+                //Operation without any variables
+                if (eq.Contains(operation1 + " ")) 
                 {
                     flag = false;
                     break;
                 }
                 foreach (char operation2 in operations)
                 {
-                    string stringOperation1 = operation1.ToString();
-                    string stringOperation2 = operation2.ToString();
-                    string incorrectCombination = stringOperation1 + stringOperation2;
-                    if(eq.Contains(incorrectCombination))
-                        flag = false; 
+                    //Case when program checks "*¬" "|¬" etc.
+                    if (operation2 == '¬' && operation1 != '¬') 
+                    {
+                        continue;
+                    }
+                    else 
+                    {
+                        string stringOperation1 = operation1.ToString();
+                        string stringOperation2 = operation2.ToString();
+                        string incorrectCombination = stringOperation1 + stringOperation2;
+                        if (eq.Contains(incorrectCombination))
+                            flag = false;
+                    }
                 }
             }
             return flag;
@@ -150,7 +171,8 @@ namespace CalculatorLib
         {
             //!!!USE InitVariables before using this method!!!
             //Method gets rid of brackets, simplifying the equation and returning result of the equation
-            //  Example of what we send: (1→0)~(0→1)
+            //  Example of what we send: 101
+            //  Example of what we get:(X→Y)~(Y→Z) ==> (1→0)~(0→1)
             //      Replacing vars with values
             string tempEq = equation;
             //  Clearing equation from spacebars
@@ -458,12 +480,15 @@ namespace CalculatorLib
                                     tempMDNF += "¬" + variables[i] + "*";
                             }
                         }
+                        //Deleting the last symbol "*" or there will be incorrect result such as "xyz*"
+                        tempMDNF = tempMDNF.Substring(0, tempMDNF.Length - 1);
                         tempMDNF += "+";
                     }
                 }
             }
+            //Deleting the last symbol "+" or there will be incorrect result such as "xyz+x!yz+"
             if (tempMDNF.Length != 0)
-                tempMDNF = tempMDNF.Substring(0, tempMDNF.Length - 2);
+                tempMDNF = tempMDNF.Substring(0, tempMDNF.Length - 1);
 
             MDNF = tempMDNF;
             return tempMDNF;

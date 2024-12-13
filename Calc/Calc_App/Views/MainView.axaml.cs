@@ -13,6 +13,7 @@ namespace Calc_App.Views;
 public partial class MainView : UserControl
 {
     Calculator calculator = new Calculator();
+
     public MainView()
     {
         InitializeComponent();
@@ -117,7 +118,7 @@ public partial class MainView : UserControl
                 ++bracketsCtr;
             }
         }
-        if (bracketsCtr == 2)
+        if (bracketsCtr == 2 && equation.Length == 4)
         {
             equation = equation.Replace("(", "");
             equation = equation.Replace(")", "");
